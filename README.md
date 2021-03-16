@@ -1,7 +1,7 @@
 # csound-xtract : Csound feature extraction using libXtract
 
 ## Overview
-csound-xtract is a plugin opcode which uses libXtract to perform feature extraction from within Csound.
+csound-xtract is a set of plugin opcodes which use libXtract to perform feature extraction and associated tasks from within Csound.
 
 Development is still ongoing and subject to various research matters, thus is provided in an experimental/alpha state and may contain bugs. Parts of the code are due overhauls and refactoring, but the intention is for the opcodes and general operation to remain the same as presented here.
 
