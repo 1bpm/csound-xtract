@@ -1,0 +1,4 @@
+56c56
+< class Csound : CSOUND {
+---
+> class Csound : public CSOUND {
