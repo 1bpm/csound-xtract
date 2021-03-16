@@ -17,7 +17,7 @@ Tested on Linux and Windows 7 with MSYS as of March 2021.
 
 
 ## Installation
-Create a build directory at the top of the source tree, excute *cmake ..*, *make* and optionally *make install* as root. If the latter is not used/possible then the resulting libcsxtract library can be used with the *--opcode-lib* flag in Csound.
+Create a build directory at the top of the source tree, execute *cmake ..*, *make* and optionally *make install* as root. If the latter is not used/possible then the resulting libcsxtract library can be used with the *--opcode-lib* flag in Csound.
 eg:
 
 	mkdir build && cd build
