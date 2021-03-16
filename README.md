@@ -29,8 +29,6 @@ Cmake should find Csound and libXtract using the modules in the cmake/Modules di
 ## Examples
 Some examples are provided in the examples directory.
 
-## Bugs/suggestions etc
-Please contact Richard at q@1bpm.net
 
 ## Opcode reference
 
