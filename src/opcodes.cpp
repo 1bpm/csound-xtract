@@ -559,8 +559,8 @@ struct xtcorpus : csnd::Plugin<1, 2> {
         if (!(corpusProfile = getHandle<AnalysisProfile>(csound, inargs[0]))) {
             return csound->init_error("profile handle invalid");
         }
-        
-        if ((corpus->input = csound->get_csound()->FTnp2Find(csound, &inargs[1])) == NULL) {
+       	CSOUND* csbase = (CSOUND *) csound->get_csound(); 
+        if ((corpus->input = csbase->FTnp2Find(csbase, &inargs[1])) == NULL) {
             return csound->init_error("cannot get function table specified");
         }
         

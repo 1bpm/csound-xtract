@@ -5,12 +5,10 @@ csound-xtract is a set of plugin opcodes which use libXtract to perform feature 
 
 Development is still ongoing and subject to various research matters, thus is provided in an experimental/alpha state and may contain bugs. Parts of the code are due overhauls and refactoring, but the intention is for the opcodes and general operation to remain the same as presented here.
 
-The current source of Csound has the member function get_csound() in plugin.h, however this does not function correctly. As of writing there is an outstanding issue on github so it is anticipated to be fixed soon. In the meantime a single line needs to be changed in plugin.h. The patch file plugin.h.patch is provided as an interim solution.
-
 
 ## Requirements
 * Cmake >= 3.8
-* Csound development libraries/headers (with patch applied as above or get_csound() fixed)
+* Csound with development headers >= 6.14.0
 * [LibXtract](https://github.com/jamiebullock/LibXtract)
 
 Tested on Linux and Windows 7 with MSYS as of March 2021.
