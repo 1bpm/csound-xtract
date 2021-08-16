@@ -7,7 +7,7 @@ Development is still ongoing and subject to various research matters, thus is pr
 
 
 ## Requirements
-* Cmake >= 3.8
+* Cmake >= 2.8.12
 * Csound with development headers >= 6.14.0
 * [LibXtract](https://github.com/jamiebullock/LibXtract)
 

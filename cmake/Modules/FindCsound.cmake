@@ -4,24 +4,52 @@
 #  CSOUND_INCLUDE_DIRS - The Csound include directories.
 #  CSOUND_LIBRARIES - The libraries needed to use the Csound library.
 
-if(APPLE)
-  find_path(CSOUND_INCLUDE_DIR csound.h HINTS /Library/Frameworks/CsoundLib64.framework/Headers
-  "$ENV{HOME}/Library/Frameworks/CsoundLib64.framework/Headers")
-elseif(WIN32)
-  find_path(CSOUND_INCLUDE_DIR csound.h PATH_SUFFIXES csound 
+# RKnight 2021-07-21 : quick copy paste hack to deal with 32 bit if not using double
+
+if(USE_DOUBLE)
+  # 64 bit
+  if(APPLE)
+    find_path(CSOUND_INCLUDE_DIR csound.h HINTS /Library/Frameworks/CsoundLib64.framework/Headers
+    "$ENV{HOME}/Library/Frameworks/CsoundLib64.framework/Headers")
+  elseif(WIN32)
+    find_path(CSOUND_INCLUDE_DIR csound.h PATH_SUFFIXES csound 
             HINTS "c:\\Program Files\\Csound6_x64\\include")
+  else()
+    find_path(CSOUND_INCLUDE_DIR csound.h PATH_SUFFIXES csound)
+  endif()
+
+  if(APPLE)
+    find_library(CSOUND_LIBRARY NAMES CsoundLib64 HINTS /Library/Frameworks/CsoundLib64.framework/
+    "$ENV{HOME}/Library/Frameworks/CsoundLib64.framework")
+  elseif(WIN32)
+    find_library(CSOUND_LIBRARY NAMES csound64 HINTS "c:\\Program Files\\Csound6_x64\\lib")
+  else()
+    find_library(CSOUND_LIBRARY NAMES csound64 csound)
+  endif()
+
 else()
-  find_path(CSOUND_INCLUDE_DIR csound.h PATH_SUFFIXES csound)
+  # 32 bit
+  if(APPLE)
+    find_path(CSOUND_INCLUDE_DIR csound.h HINTS /Library/Frameworks/CsoundLib.framework/Headers
+    "$ENV{HOME}/Library/Frameworks/CsoundLib.framework/Headers")
+  elseif(WIN32)
+    find_path(CSOUND_INCLUDE_DIR csound.h PATH_SUFFIXES csound 
+            HINTS "c:\\Program Files (x86)\\Csound6\\include")
+  else()
+    find_path(CSOUND_INCLUDE_DIR csound.h PATH_SUFFIXES csound)
+  endif()
+
+  if(APPLE)
+    find_library(CSOUND_LIBRARY NAMES CsoundLib HINTS /Library/Frameworks/CsoundLib.framework/
+    "$ENV{HOME}/Library/Frameworks/CsoundLib.framework")
+  elseif(WIN32)
+    find_library(CSOUND_LIBRARY NAMES csound HINTS "c:\\Program Files (x86)\\Csound6\\lib")
+  else()
+    find_library(CSOUND_LIBRARY NAMES csound csound)
+  endif()
+
 endif()
 
-if(APPLE)
-  find_library(CSOUND_LIBRARY NAMES CsoundLib64 HINTS /Library/Frameworks/CsoundLib64.framework/
-  "$ENV{HOME}/Library/Frameworks/CsoundLib64.framework")
-elseif(WIN32)
-  find_library(CSOUND_LIBRARY NAMES csound64 HINTS "c:\\Program Files\\Csound6_x64\\lib")
-else()
-  find_library(CSOUND_LIBRARY NAMES csound64 csound)
-endif()
 
 include(FindPackageHandleStandardArgs)
 # handle the QUIETLY and REQUIRED arguments and set CSOUND_FOUND to TRUE
